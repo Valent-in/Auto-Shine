@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Auto Shine</string>
+    <string name="settings">Settings</string>
+    <string name="brightness_c">Brightness:</string>
+    <string name="m_always">Always</string>
+    <string name="m_portrait">Portrait only</string>
+    <string name="m_unlock">On screen unlock/rotate</string>
+    <string name="stop">Stop</string>
+    <string name="get_data">Get data from service</string>
+    <string name="show_config">Show configuration</string>
+    <string name="hide_config">Hide configuration</string>
+    <string name="service_running">Service is running</string>
+    <string name="service_stopped">Service stopped</string>
+    <string name="work_mode_c">Work mode:</string>
+    <string name="start">Start</string>
+    <string name="sensor_c">Sensor:</string>
+    <string name="save_settings">Save settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_request">This app requires permission to control screen brightness.\nSelect \"Auto Shine\" and allow it to modify system settings.</string>
+    <string name="dontkillmyapp_link" translatable="false"><a href="https://dontkillmyapp.com/">https://dontkillmyapp.com/</a></string>
+    <string name="set_battery">Set app battery usage to \"unrestricted\"</string>
+    <string name="request">Request</string>
+    <string name="if_not_work">If app stops working after some time of inactivity, try vendor-specific solution:</string>
+    <string name="battery_optimizations">Battery optimizations may suspend background service.</string>
+    <string name="starting_service">Starting service</string>
+    <string name="m_landscape">Landscape only</string>
+    <string name="config_updated">Config updated</string>
+</resources>
