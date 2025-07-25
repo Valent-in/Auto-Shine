@@ -17,6 +17,12 @@ Permissions:
 - Run background service - it has "special use" type because does not fit in any category
 - Run at startup - ...
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.mine.autoshine/)
+
+Or download the latest APK from the [Releases Section](https://github.com/Valent-in/Auto-Shine/releases/latest).
+
 ---
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3.  
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
