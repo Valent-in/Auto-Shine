@@ -110,12 +110,23 @@ public class ShineService extends Service {
 		super.onDestroy();
 	}
 
+	@Override
+	public void onTaskRemoved(Intent rootIntent) {
+		// This is called if the user swipes the app away from the recent tasks list.
+		// We attempt to restart the service to keep the backlight control running.
+		Intent restartServiceIntent = new Intent(getApplicationContext(), this.getClass());
+		restartServiceIntent.setPackage(getPackageName());
+		startService(restartServiceIntent);
+		super.onTaskRemoved(rootIntent);
+	}
+
 	private void setUpAsForeground() {
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 		String channelId = "shine_channel_id";
-		NotificationChannel channel = new NotificationChannel(channelId, "Auto Shine", NotificationManager.IMPORTANCE_HIGH);
-		channel.setImportance(NotificationManager.IMPORTANCE_MIN);
+		// Importance LOW keeps the notification silent but helps prevent the service
+		// from being killed for battery saving.
+		NotificationChannel channel = new NotificationChannel(channelId, "Auto Shine", NotificationManager.IMPORTANCE_LOW);
 		channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 		notificationManager.createNotificationChannel(channel);
 

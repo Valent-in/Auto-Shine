@@ -194,7 +194,14 @@ public class MainActivity extends Activity {
 	}
 
 	private void runService() {
-		startService(new Intent(getBaseContext(), ShineService.class));
+		Intent serviceIntent = new Intent(getBaseContext(), ShineService.class);
+		// From Android O (8.0), background services must be started as foreground services
+		// to avoid being killed immediately.
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			startForegroundService(serviceIntent);
+		} else {
+			startService(serviceIntent);
+		}
 		Toast.makeText(this, getResources().getString(R.string.starting_service), Toast.LENGTH_SHORT).show();
 	}
 
