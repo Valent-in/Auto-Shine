@@ -73,11 +73,12 @@ public class ShineService extends Service {
 	}
 
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
+	public void onCreate() {
+		super.onCreate();
 		setUpAsForeground();
 
 		shiner = new ShineControl(this);
-		shiner.onScreenUnlock();
+
 		IntentFilter commandFilt = new IntentFilter(Constants.SERVICE_INTENT_ACTION);
 		registerReceiver(communicator, commandFilt, RECEIVER_EXPORTED);
 
@@ -85,15 +86,26 @@ public class ShineService extends Service {
 		deviceFilt.addAction(Intent.ACTION_SCREEN_OFF);
 		deviceFilt.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
 		registerReceiver(deviceState, deviceFilt);
+	}
 
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		shiner.onScreenUnlock();
 		return Service.START_STICKY;
 	}
 
 	@Override
 	public void onDestroy() {
-		shiner.stopListening();
-		unregisterReceiver(communicator);
-		unregisterReceiver(deviceState);
+		if (shiner != null) {
+			shiner.stopListening();
+		}
+		try {
+			unregisterReceiver(communicator);
+		} catch (Exception ignored) {}
+		try {
+			unregisterReceiver(deviceState);
+		} catch (Exception ignored) {}
+
 		Toast.makeText(this, getResources().getString(R.string.service_stopped), Toast.LENGTH_SHORT).show();
 		super.onDestroy();
 	}
