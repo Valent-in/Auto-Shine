@@ -86,7 +86,10 @@ public class ShineControl implements SensorEventListener {
 		}
 	}
 
-	public void startListening() {
+	public void startListening(boolean onRotate) {
+		if ((sett.mode == Constants.WORK_MODE_UNLOCK) && !sett.rotate && onRotate)
+			return;
+
 		if (!onListen) {
 			sMgr.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
 			onListen = true;
@@ -146,7 +149,7 @@ public class ShineControl implements SensorEventListener {
 	public void reconfigure() {
 		stopListening();
 		sett.load();
-		startListening();
+		startListening(false);
 	}
 
 	public void setLandscape(boolean land) {
@@ -157,7 +160,7 @@ public class ShineControl implements SensorEventListener {
 		Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS_MODE,
 				Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
 
-		startListening();
+		startListening(false);
 	}
 
 	public int getLastSensorValue() {

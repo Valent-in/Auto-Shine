@@ -42,7 +42,7 @@ public class ShineService extends Service {
 					shiner.stopListening();
 					Toast.makeText(context, getResources().getString(R.string.suspended), Toast.LENGTH_SHORT).show();
 				} else {
-					shiner.startListening();
+					shiner.startListening(false);
 				}
 			}
 		}
@@ -62,7 +62,7 @@ public class ShineService extends Service {
 				if (Intent.ACTION_SCREEN_ON.equals(intent.getAction()))
 					shiner.onScreenUnlock();
 				else
-					shiner.startListening();
+					shiner.startListening(Intent.ACTION_CONFIGURATION_CHANGED.equals(intent.getAction()));
 			}
 		}
 	};
@@ -85,6 +85,7 @@ public class ShineService extends Service {
 		IntentFilter deviceFilt = new IntentFilter(Intent.ACTION_SCREEN_ON);
 		deviceFilt.addAction(Intent.ACTION_SCREEN_OFF);
 		deviceFilt.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
+		deviceFilt.addAction(Intent.ACTION_USER_PRESENT);
 		registerReceiver(deviceState, deviceFilt);
 	}
 

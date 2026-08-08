@@ -121,6 +121,15 @@ public class MainActivity extends Activity {
 			sendBroadcastToService(Constants.SERVICE_INTENT_PAYLOAD_SET);
 		});
 
+		CheckBox chWRotate = findViewById(R.id.ch_work_rotate);
+		chWRotate.setChecked(sett.rotate);
+		chWRotate.setEnabled(sett.mode == Constants.WORK_MODE_UNLOCK);
+		chWRotate.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+			sett.rotate = isChecked;
+			sett.save();
+			sendBroadcastToService(Constants.SERVICE_INTENT_PAYLOAD_SET);
+		});
+
 		RadioButton rbWAlways = findViewById(R.id.rb_work_always);
 		RadioButton rbWPortrait = findViewById(R.id.rb_work_portrait);
 		RadioButton rbWLandscape = findViewById(R.id.rb_work_landscape);
@@ -152,14 +161,12 @@ public class MainActivity extends Activity {
 			sett.save();
 			sendBroadcastToService(Constants.SERVICE_INTENT_PAYLOAD_SET);
 
-			if (checkedId == R.id.rb_work_unlock)
+			if (checkedId == R.id.rb_work_unlock) {
+				chWRotate.setEnabled(true);
 				requestPhonePermission();
-		});
-
-		CheckBox chWRotate = findViewById(R.id.ch_work_rotate);
-		chWRotate.setChecked(sett.rotate);
-		chWRotate.setOnCheckedChangeListener((compoundButton, isChecked) -> {
-			sett.rotate = isChecked;
+			} else {
+				chWRotate.setEnabled(false);
+			}
 		});
 
 		TextView textView = findViewById(R.id.tv_dontkillmyapp);
