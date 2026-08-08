@@ -9,6 +9,7 @@ public class MySettings {
 	public int l1, l2, l3, l4, b1, b2, b3, b4;
 	public int threshold;
 	public int mode;
+	public boolean rotate;
 
 	MySettings(Context context) {
 		this.context = context;
@@ -27,6 +28,7 @@ public class MySettings {
 		b4 = sharedPref.getInt("b4", 255);
 		threshold = sharedPref.getInt("threshold", 0);
 		mode = sharedPref.getInt("mode", Constants.WORK_MODE_ALWAYS);
+		rotate = sharedPref.getBoolean("rotate", true);
 	}
 
 	public void save() {
@@ -41,6 +43,7 @@ public class MySettings {
 		editor.putInt("b4", b4);
 		editor.putInt("threshold", threshold);
 		editor.putInt("mode", mode);
+		editor.putBoolean("rotate", rotate);
 		editor.commit();
 	}
 }

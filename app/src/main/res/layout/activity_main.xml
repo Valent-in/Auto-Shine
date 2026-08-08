@@ -367,11 +367,24 @@
                     android:layout_height="wrap_content"
                     android:text="@string/m_landscape" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/rb_work_unlock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/m_unlock" />
+
+                <CheckBox
+                    android:id="@+id/ch_work_rotate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m_rotate" />
+                </LinearLayout>
+
             </RadioGroup>
 
         </LinearLayout>

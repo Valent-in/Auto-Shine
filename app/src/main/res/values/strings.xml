@@ -4,7 +4,7 @@
     <string name="brightness_c">Brightness:</string>
     <string name="m_always">Always</string>
     <string name="m_portrait">Portrait only</string>
-    <string name="m_unlock">On screen unlock/rotate</string>
+    <string name="m_unlock">"On screen unlock "</string>
     <string name="stop">Stop</string>
     <string name="get_data">Get data from service</string>
     <string name="show_config">Show configuration</string>
@@ -28,4 +28,5 @@
     <string name="active">Active</string>
     <string name="suspended">Suspended</string>
     <string name="threshold_c">Threshold:</string>
+    <string name="m_rotate">rotate</string>
 </resources>

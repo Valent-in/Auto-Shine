@@ -156,6 +156,12 @@ public class MainActivity extends Activity {
 				requestPhonePermission();
 		});
 
+		CheckBox chWRotate = findViewById(R.id.ch_work_rotate);
+		chWRotate.setChecked(sett.rotate);
+		chWRotate.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+			sett.rotate = isChecked;
+		});
+
 		TextView textView = findViewById(R.id.tv_dontkillmyapp);
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
