@@ -56,17 +56,32 @@ public class ShineControl implements SensorEventListener {
 		}
 	}
 
-	private void scheduleSuspend() {
+	private boolean shouldSuspend() {
 		if (sett.mode == Constants.WORK_MODE_ALWAYS)
-			return;
+			return false;
 
 		if (sett.mode == Constants.WORK_MODE_LANDSCAPE && landscape)
-			return;
+			return false;
 
 		if (sett.mode == Constants.WORK_MODE_PORTRAIT && !landscape)
-			return;
+			return false;
 
-		delayer.postDelayed(new Runner(), pause);
+		return true;
+	}
+
+	private void scheduleSuspend() {
+		if (shouldSuspend())
+			delayer.postDelayed(new Runner(), pause);
+	}
+
+	public int getState() {
+		if (!shouldSuspend())
+			if (onListen)
+				return Constants.SERVICE_STATE_ACTIVE;
+			else
+				return Constants.SERVICE_STATE_PAUSED;
+
+		return Constants.SERVICE_STATE_SUSPENDED;
 	}
 
 	private class Runner implements Runnable {

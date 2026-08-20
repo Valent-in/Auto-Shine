@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
 import android.content.res.Configuration;
@@ -67,9 +68,21 @@ public class ShineService extends Service {
 		}
 	};
 
+	private final IBinder binder = new LocalBinder();
+
+	public class LocalBinder extends Binder {
+		ShineService getService() {
+			return ShineService.this;
+		}
+	}
+
+	public int getState() {
+		return shiner.getState();
+	}
+
 	@Override
 	public IBinder onBind(Intent arg0) {
-		return null;
+		return binder;
 	}
 
 	@Override

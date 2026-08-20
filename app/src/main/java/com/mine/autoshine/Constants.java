@@ -12,4 +12,8 @@ public class Constants {
 
 	public static final int SERVICE_INTENT_PAYLOAD_PING = 0;
 	public static final int SERVICE_INTENT_PAYLOAD_SET = 1;
+
+	public static final int SERVICE_STATE_SUSPENDED = 0;
+	public static final int SERVICE_STATE_PAUSED = 1;
+	public static final int SERVICE_STATE_ACTIVE = 2;
 }
