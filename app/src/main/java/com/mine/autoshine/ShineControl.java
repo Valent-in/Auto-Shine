@@ -25,7 +25,7 @@ public class ShineControl implements SensorEventListener {
 
 	private final Handler delayer = new Handler();
 
-	private final long pause = 2000;
+	private final long pause = 1000;
 
 	private boolean onListen = false;
 	private boolean landscape = false;
@@ -78,7 +78,7 @@ public class ShineControl implements SensorEventListener {
 			}
 
 			if (ringing) {
-				delayer.postDelayed(new Runner(), pause);
+				delayer.postDelayed(new Runner(), pause * 2);
 			} else {
 				stopListening();
 			}
