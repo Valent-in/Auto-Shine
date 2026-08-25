@@ -1,0 +1,4 @@
+Add separate option for screen rotation
+Add user present listener (device unlock)
+Reduce sensor listening interval
+Indicate service state with quick settings tile
