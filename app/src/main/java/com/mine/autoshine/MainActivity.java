@@ -107,15 +107,39 @@ public class MainActivity extends Activity {
 
 		Button btnSave = findViewById(R.id.btn_save_settings);
 		btnSave.setOnClickListener(arg0 -> {
-			sett.l1 = Integer.parseInt(etSensor1.getText().toString());
-			sett.l2 = Integer.parseInt(etSensor2.getText().toString());
-			sett.l3 = Integer.parseInt(etSensor3.getText().toString());
-			sett.l4 = Integer.parseInt(etSensor4.getText().toString());
-			sett.b1 = Integer.parseInt(etBrightness1.getText().toString());
-			sett.b2 = Integer.parseInt(etBrightness2.getText().toString());
-			sett.b3 = Integer.parseInt(etBrightness3.getText().toString());
-			sett.b4 = Integer.parseInt(etBrightness4.getText().toString());
-			sett.threshold = Integer.parseInt(etThreshold.getText().toString());
+			final int l1;
+			final int l2;
+			final int l3;
+			final int l4;
+			final int b1;
+			final int b2;
+			final int b3;
+			final int b4;
+			final int threshold;
+
+			try {
+				l1 = Integer.parseInt(etSensor1.getText().toString());
+				l2 = Integer.parseInt(etSensor2.getText().toString());
+				l3 = Integer.parseInt(etSensor3.getText().toString());
+				l4 = Integer.parseInt(etSensor4.getText().toString());
+				b1 = Integer.parseInt(etBrightness1.getText().toString());
+				b2 = Integer.parseInt(etBrightness2.getText().toString());
+				b3 = Integer.parseInt(etBrightness3.getText().toString());
+				b4 = Integer.parseInt(etBrightness4.getText().toString());
+				threshold = Integer.parseInt(etThreshold.getText().toString());
+			} catch (NumberFormatException e) {
+				return;
+			}
+
+			sett.l1 = l1;
+			sett.l2 = l2;
+			sett.l3 = l3;
+			sett.l4 = l4;
+			sett.b1 = b1;
+			sett.b2 = b2;
+			sett.b3 = b3;
+			sett.b4 = b4;
+			sett.threshold = threshold;
 
 			sett.save();
 			sendBroadcastToService(Constants.SERVICE_INTENT_PAYLOAD_SET);
