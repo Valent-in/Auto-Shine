@@ -156,7 +156,7 @@ public class ShineControl implements SensorEventListener {
 		int currentBrightness = Settings.System.getInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, 0);
 		tempBrightness = brightness;
 		if (Math.abs(currentBrightness - brightness) > sett.threshold) {
-			Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+			Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, convertToPWM(brightness));
 		}
 
 	}
@@ -188,5 +188,35 @@ public class ShineControl implements SensorEventListener {
 
 	public boolean getOnListen() {
 		return onListen;
+	}
+
+	/**
+	 * Convert brightness from percent to pwm values
+	 * @param userSetBrightness display brightness 0-100
+	 * @return brightness converted to pwm values
+	 */
+	public static int convertToPWM(int userSetBrightness) {
+		if (userSetBrightness < 0) {
+			userSetBrightness = 0;
+		}
+		if (userSetBrightness > 100) {
+			userSetBrightness = 100;
+		}
+		return Math.round((float)255/100*userSetBrightness);
+	}
+
+	/**
+	 * Convert display pwm values for brightness to percent
+	 * @param displayBrightness pwm value 0-255
+	 * @return brightness in percent
+	 */
+	public static int convertFromPWM(int displayBrightness) {
+		if (displayBrightness < 0) {
+			displayBrightness = 0;
+		}
+		if (displayBrightness > 255) {
+			displayBrightness = 255;
+		}
+		return Math.round((float)100/255*displayBrightness);
 	}
 }

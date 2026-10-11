@@ -29,4 +29,6 @@
     <string name="suspended">Suspended</string>
     <string name="threshold_c">Threshold:</string>
     <string name="m_rotate">On rotate</string>
+    <string name="minMaxBrightness">0–100%</string>
+    <string name="minMaxSensor">0–25000</string>
 </resources>

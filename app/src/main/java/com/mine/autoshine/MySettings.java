@@ -1,5 +1,7 @@
 package com.mine.autoshine;
 
+import static com.mine.autoshine.ShineControl.convertFromPWM;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -22,10 +24,10 @@ public class MySettings {
 		l2 = sharedPref.getInt("l2", 200);
 		l3 = sharedPref.getInt("l3", 2000);
 		l4 = sharedPref.getInt("l4", 20000);
-		b1 = sharedPref.getInt("b1", 31);
-		b2 = sharedPref.getInt("b2", 63);
-		b3 = sharedPref.getInt("b3", 127);
-		b4 = sharedPref.getInt("b4", 255);
+		b1 = sharedPref.getInt("b1", convertFromPWM(31));
+		b2 = sharedPref.getInt("b2", convertFromPWM(63));
+		b3 = sharedPref.getInt("b3", convertFromPWM(127));
+		b4 = sharedPref.getInt("b4", convertFromPWM(255));
 		threshold = sharedPref.getInt("threshold", 0);
 		mode = sharedPref.getInt("mode", Constants.WORK_MODE_ALWAYS);
 		rotate = sharedPref.getBoolean("rotate", true);
