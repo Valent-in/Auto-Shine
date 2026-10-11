@@ -62,10 +62,10 @@
             <Button
                 android:id="@+id/btn_expand"
                 android:layout_width="fill_parent"
-                android:layout_height="34sp"
+                android:layout_height="40sp"
                 android:layout_marginTop="5dp"
                 android:text="@string/show_config"
-                android:textSize="11sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/ll_hidden_settings"
@@ -74,7 +74,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -92,11 +92,13 @@
 
                     <EditText
                         android:id="@+id/et_sensor_value_1"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxSensor"
                         android:text="" />
 
                     <TextView
@@ -107,16 +109,18 @@
 
                     <EditText
                         android:id="@+id/et_brightness_value_1"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxBrightness"
                         android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -134,11 +138,13 @@
 
                     <EditText
                         android:id="@+id/et_sensor_value_2"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxSensor"
                         android:text="" />
 
                     <TextView
@@ -149,16 +155,18 @@
 
                     <EditText
                         android:id="@+id/et_brightness_value_2"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxBrightness"
                         android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -176,11 +184,13 @@
 
                     <EditText
                         android:id="@+id/et_sensor_value_3"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxSensor"
                         android:text="" />
 
                     <TextView
@@ -191,16 +201,18 @@
 
                     <EditText
                         android:id="@+id/et_brightness_value_3"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxBrightness"
                         android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -218,11 +230,13 @@
 
                     <EditText
                         android:id="@+id/et_sensor_value_4"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxSensor"
                         android:text="" />
 
                     <TextView
@@ -233,11 +247,13 @@
 
                     <EditText
                         android:id="@+id/et_brightness_value_4"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
+                        android:textAlignment="center"
+                        android:hint="@string/minMaxBrightness"
                         android:text="" />
                 </LinearLayout>
 
@@ -254,7 +270,7 @@
 
                     <EditText
                         android:id="@+id/et_threshold"
-                        android:layout_width="75sp"
+                        android:layout_width="100sp"
                         android:layout_height="wrap_content"
                         android:importantForAutofill="no"
                         android:inputType="number"
@@ -377,7 +393,8 @@
                     android:id="@+id/ch_work_rotate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="46px"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginHorizontal="46dp"
                     android:text="@string/m_rotate" />
 
             </RadioGroup>

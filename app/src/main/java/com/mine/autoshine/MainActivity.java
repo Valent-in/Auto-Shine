@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.InputFilter;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,31 +92,42 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		// init input fields for ambient light values, limit allowed input to 1-25000
 		etSensor1 = findViewById(R.id.et_sensor_value_1);
+		etSensor1.setFilters(new InputFilter[]{new InputValuesFilter(0, 25000)});
 		etSensor2 = findViewById(R.id.et_sensor_value_2);
+		etSensor2.setFilters(new InputFilter[]{new InputValuesFilter(0, 25000)});
 		etSensor3 = findViewById(R.id.et_sensor_value_3);
+		etSensor3.setFilters(new InputFilter[]{new InputValuesFilter(0, 25000)});
 		etSensor4 = findViewById(R.id.et_sensor_value_4);
+		etSensor4.setFilters(new InputFilter[]{new InputValuesFilter(0, 25000)});
 
+		// init input fields for display brightness, limit allowed input values to 0-100%
 		etBrightness1 = findViewById(R.id.et_brightness_value_1);
+		etBrightness1.setFilters(new InputFilter[]{new InputValuesFilter(0, 100)});
 		etBrightness2 = findViewById(R.id.et_brightness_value_2);
+		etBrightness2.setFilters(new InputFilter[]{new InputValuesFilter(0, 100)});
 		etBrightness3 = findViewById(R.id.et_brightness_value_3);
+		etBrightness3.setFilters(new InputFilter[]{new InputValuesFilter(0, 100)});
 		etBrightness4 = findViewById(R.id.et_brightness_value_4);
+		etBrightness4.setFilters(new InputFilter[]{new InputValuesFilter(0, 100)});
 
 		etThreshold = findViewById(R.id.et_threshold);
+		etThreshold.setFilters(new InputFilter[]{new InputValuesFilter(0, 1000)});
 
 		refillCollapsibleSettings();
 
 		Button btnSave = findViewById(R.id.btn_save_settings);
 		btnSave.setOnClickListener(arg0 -> {
-			sett.l1 = Integer.parseInt(etSensor1.getText().toString());
-			sett.l2 = Integer.parseInt(etSensor2.getText().toString());
-			sett.l3 = Integer.parseInt(etSensor3.getText().toString());
-			sett.l4 = Integer.parseInt(etSensor4.getText().toString());
-			sett.b1 = Integer.parseInt(etBrightness1.getText().toString());
-			sett.b2 = Integer.parseInt(etBrightness2.getText().toString());
-			sett.b3 = Integer.parseInt(etBrightness3.getText().toString());
-			sett.b4 = Integer.parseInt(etBrightness4.getText().toString());
-			sett.threshold = Integer.parseInt(etThreshold.getText().toString());
+			sett.l1 = Integer.parseInt(!etSensor1.getText().toString().isEmpty() ? etSensor1.getText().toString() : "0");
+			sett.l2 = Integer.parseInt(!etSensor2.getText().toString().isEmpty() ? etSensor2.getText().toString() : "0");
+			sett.l3 = Integer.parseInt(!etSensor3.getText().toString().isEmpty() ? etSensor3.getText().toString() : "0");
+			sett.l4 = Integer.parseInt(!etSensor4.getText().toString().isEmpty() ? etSensor4.getText().toString() : "0");
+			sett.b1 = Integer.parseInt(!etBrightness1.getText().toString().isEmpty() ? etBrightness1.getText().toString() : "0");
+			sett.b2 = Integer.parseInt(!etBrightness2.getText().toString().isEmpty() ? etBrightness2.getText().toString() : "0");
+			sett.b3 = Integer.parseInt(!etBrightness3.getText().toString().isEmpty() ? etBrightness3.getText().toString() : "0");
+			sett.b4 = Integer.parseInt(!etBrightness4.getText().toString().isEmpty() ? etBrightness4.getText().toString() : "0");
+			sett.threshold = Integer.parseInt(!etThreshold.getText().toString().isEmpty() ? etThreshold.getText().toString() : "0");
 
 			sett.save();
 			sendBroadcastToService(Constants.SERVICE_INTENT_PAYLOAD_SET);
