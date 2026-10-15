@@ -128,6 +128,7 @@ public class MainActivity extends Activity {
 				b4 = Integer.parseInt(etBrightness4.getText().toString());
 				threshold = Integer.parseInt(etThreshold.getText().toString());
 			} catch (NumberFormatException e) {
+				Toast.makeText(this, R.string.wrong_numeric_value, Toast.LENGTH_SHORT).show();
 				return;
 			}
 
