@@ -25,6 +25,7 @@
     <string name="starting_service">Starting service</string>
     <string name="m_landscape">Landscape only</string>
     <string name="config_updated">Config updated</string>
+    <string name="wrong_numeric_value">Wrong numeric value</string>
     <string name="active">Active</string>
     <string name="suspended">Suspended</string>
     <string name="threshold_c">Threshold:</string>
